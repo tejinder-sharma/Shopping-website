@@ -3,7 +3,7 @@ import Home from "./routes/home/home.component";
 import Navigation from "./routes/navigation/navigation.component";
 
 const Shop = () => {
-  return <div>I am shop component</div>;
+  return <div className="min-h-screen w-full flex justify-center items-center">I am shop component</div>;
 };
 function App() {
   return (
