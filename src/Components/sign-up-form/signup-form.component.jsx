@@ -1,4 +1,52 @@
+import {useState} from 'react'
+
+import { createAuthUserWithEmailAndPassword, createUserDocumentFromAuth } from '../../utils/firebase/firebase.utils';
+
+const defaultFormFields = {
+  displayName: '',
+  email: '',
+  password: '',
+  confirmPassword: ''
+}
+
 const SignUpForm = () => {
+  const [formFields, setFormFields] = useState(defaultFormFields);
+  const {displayName, email, password, confirmPassword} = formFields;
+
+  console.log(formFields)
+
+  const resetFormFields = () =>{
+    setFormFields(defaultFormFields)
+  }
+  
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    // console.log(event)
+    if(password !== confirmPassword){
+      alert('password not matched');
+      return
+    }
+    try{
+      const { user } =  await createAuthUserWithEmailAndPassword(email, password);
+      await createUserDocumentFromAuth(user, {displayName});
+      resetFormFields();
+  
+    } catch(error){
+      if(error.code === 'auth/email-already-in-use'){
+        alert('Email is already in use');
+      }
+      else{
+        console.log(error)
+      }
+
+    }
+  
+
+  }
+  const handleChange = (event) => {
+    const {name, value} = event.target
+    setFormFields({...formFields, [name]: value})
+  }
   return (
     <div className="mt-4">
       <h3 className="text-2xl text-center mb-4">OR</h3>
@@ -8,7 +56,7 @@ const SignUpForm = () => {
         Please sign up
         </h2>
 
-        <form>
+        <form onSubmit={handleSubmit}>
           <div className="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
             <div>
               <label className="text-gray-700 dark:text-gray-200" htmlFor="name">
@@ -17,6 +65,9 @@ const SignUpForm = () => {
               <input
                 id="name"
                 type="text"
+                onChange={handleChange}
+                name="displayName"
+                value={displayName}
                 className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
               />
             </div>
@@ -31,6 +82,9 @@ const SignUpForm = () => {
               <input
                 id="emailAddress"
                 type="email"
+                name="email"
+                onChange={handleChange}
+                value={email}
                 className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
               />
             </div>
@@ -42,6 +96,9 @@ const SignUpForm = () => {
               <input
                 id="password"
                 type="password"
+                name="password"
+                value={password}
+                onChange={handleChange}
                 className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
               />
             </div>
@@ -56,6 +113,9 @@ const SignUpForm = () => {
               <input
                 id="passwordConfirmation"
                 type="password"
+                name="confirmPassword"
+                onChange={handleChange}
+                value={confirmPassword}
                 className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
               />
             </div>
