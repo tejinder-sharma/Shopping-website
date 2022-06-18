@@ -13,8 +13,7 @@ const SignIn = () => {
    
 
     return(
-        <div className="min-h-screen flex justify-center items-center flex-col">
-           <button className="btn btn-wide" onClick={logGoogleUser}>Sign In with google</button>
+        <div>
            <SignUpForm />
         </div>
     )
