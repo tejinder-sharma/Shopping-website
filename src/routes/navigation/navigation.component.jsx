@@ -65,7 +65,7 @@ const Navigation = () => {
                     <Link to='/'>Kids</Link>
                   </li>
                   <li>
-                    <Link to='/shop'>Children</Link>
+                    <Link to='/auth'>Children</Link>
                   </li>
                 </ul>
               </li>
@@ -118,7 +118,7 @@ const Navigation = () => {
                     <Link to='/'>Settings</Link>
                   </li>
                   <li>
-                    <Link to='/sign-in'>Logout</Link>
+                    <Link to='/auth'>Logout</Link>
                   </li>
                 </ul>
               </div>
