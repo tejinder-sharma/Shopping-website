@@ -5,7 +5,18 @@ import { ReactComponent as Menu } from "../../assests/menu.svg";
 import { ReactComponent as Dropdown } from "../../assests/dropbtn.svg";
 import { ReactComponent as Rightbtn } from "../../assests/rightbtn.svg";
 
+import { useContext } from "react";
+
+import { signOutUser } from "../../utils/firebase/firebase.utils";
+
+import { UserContext } from "../../context/user.context";
+
 const Navigation = () => {
+  const { currentUser, setCurrentUser } = useContext(UserContext);
+  const signOutHandler = async () =>{
+    await signOutUser;
+    setCurrentUser(null)
+  }
   return (
     <>
       <nav className="fixed w-full top-0 z-10">
@@ -117,9 +128,12 @@ const Navigation = () => {
                   <li>
                     <Link to='/'>Settings</Link>
                   </li>
-                  <li>
-                    <Link to='/auth'>Logout</Link>
-                  </li>
+                  {currentUser ? (<li>
+                    <span onClick={signOutHandler}>Logout</span>
+                  </li>) : <li>
+                  <Link to='/auth'>SignIn</Link>
+                </li>}
+                  
                 </ul>
               </div>
             </div>
