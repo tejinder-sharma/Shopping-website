@@ -8,7 +8,6 @@ const CartItem = ({cartItem}) => {
            <div className="flex flex-col ml-2">
              <span>{name}</span>
              <span>{`$${price}`} x {quantity}</span>
-           
            </div>
 
         </div>
