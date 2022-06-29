@@ -10,7 +10,7 @@ const CartIcon = () => {
       <label className="btn btn-ghost btn-circle" onClick={toggleIsCartOpen}>
         <div className="indicator">
           <Cart />
-          <span className="badge badge-sm indicator-item">{cartCount}</span>
+          <div  className="badge badge-sm indicator-item">{cartCount}</div>
         </div>
       </label>
     </>
