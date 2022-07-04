@@ -5,27 +5,27 @@ const Category = () =>{
         {
           "id": 1,
           "title": "Hats",
-          "imageUrl": "https://api.lorem.space/image/shoes?w=400&h=225"
+          "imageUrl": "https://images.pexels.com/photos/7880314/pexels-photo-7880314.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
         },
         {
           "id": 2,
           "title": "Jackets",
-          "imageUrl": "https://api.lorem.space/image/shoes?w=400&h=225"
+          "imageUrl": "https://images.pexels.com/photos/1833082/pexels-photo-1833082.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
         },
         {
           "id": 3,
           "title": "Sneakers",
-          "imageUrl": "https://api.lorem.space/image/shoes?w=400&h=225"
+          "imageUrl": "https://images.pexels.com/photos/19090/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
         },
         {
           "id": 4,
           "title": "Womens",
-          "imageUrl": "https://api.lorem.space/image/shoes?w=400&h=225"
+          "imageUrl": "https://images.pexels.com/photos/1661471/pexels-photo-1661471.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
         },
         {
           "id": 5,
           "title": "Mens",
-          "imageUrl": "https://api.lorem.space/image/shoes?w=400&h=225"
+          "imageUrl": "https://images.pexels.com/photos/775091/pexels-photo-775091.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
         }
       ];
       return(
